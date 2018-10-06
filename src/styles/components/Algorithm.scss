@@ -1,0 +1,23 @@
+.algorithm {
+  .test-case-scenarios {
+    margin-bottom: 10px;
+  }
+  .test-case {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .glyphicon {
+      font-size: 22px;
+      margin-left: 10px;
+      &.passed {
+        color: limegreen;
+      }
+      &.failed {
+        color: red;
+      }
+    }
+    pre {
+      flex: 1;
+    }
+  }
+}
