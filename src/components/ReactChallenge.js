@@ -8,9 +8,8 @@ class ReactChallenge extends Component {
     super(props);
     this.state = {
       gistData: "",
-      perPage: 5,
-      pageNumber: 1,
-      noMoreResults: false
+      perPage: 3,
+      pageNumber: 1
     }
   }
 
@@ -19,9 +18,13 @@ class ReactChallenge extends Component {
   }
 
   changePage = (num) => {
+    const paginationLimit = 70;
     let pageNumber = this.state.pageNumber + num;
     if (pageNumber <= 1) {
       pageNumber = 1;
+    }
+    if (pageNumber >= paginationLimit) {
+      pageNumber = paginationLimit;
     }
     this.setState({
       pageNumber
@@ -34,18 +37,27 @@ class ReactChallenge extends Component {
     fetch(url)
       .then(response => response.json())
       .then(gistData => {
-        console.log(gistData);
+        const additionalParameters = {};
+        // error check for pagination or requests limitations for unauthorized users - check gist api documentation
+        if (gistData.message) {
+          if (gistData.message.includes("rate")) {
+            additionalParameters.limitError = gistData.message;
+          } else {
+            additionalParameters.errorMsg = gistData.message
+          }
+        }
         this.setState({
-          gistData
+          gistData,
+          ...additionalParameters
         })
       })
   }
 
   renderGists() {
-    const { gistData } = this.state;
-    // error preventing for pagination or requests limit limitations
-    if (gistData.message) {
-      return <p>{gistData.message}</p>
+    const { gistData, errorMsg, limitError } = this.state;
+    const displayError = errorMsg || limitError;
+    if (displayError) {
+      return <p>{displayError}</p>
     }
     return gistData.map(gist => (
       <div key={gist.id} className="gist-container">
@@ -58,8 +70,7 @@ class ReactChallenge extends Component {
   }
 
   render() {
-    const maxPaginationNumber = 70;
-    const { gistData, pageNumber } = this.state;
+    const { gistData, pageNumber, errorMsg, limitError } = this.state;
     return (
       <section className="react-challenge">
         <h2>React</h2>
@@ -73,7 +84,7 @@ class ReactChallenge extends Component {
           {gistData && this.renderGists()}
           <div className="select-page-buttons">
             <Button
-              disabled={pageNumber === 1}
+              disabled={!!limitError || pageNumber === 1}
               bsStyle="primary"
               onClick={() => this.changePage(-1)}
             >
@@ -81,7 +92,7 @@ class ReactChallenge extends Component {
             </Button>
             {`- ${pageNumber} -`}
             <Button
-              disabled={pageNumber >= maxPaginationNumber} // limited pagination for unauthorized users
+              disabled={!!errorMsg}
               bsStyle="primary"
               onClick={() => this.changePage(+1)}
             >
