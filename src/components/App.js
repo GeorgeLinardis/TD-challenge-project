@@ -5,6 +5,7 @@ import Searching from "./Searching";
 import ReactChallenge from "./ReactChallenge";
 
 class App extends Component {
+
   render() {
     return (
       <Grid>
