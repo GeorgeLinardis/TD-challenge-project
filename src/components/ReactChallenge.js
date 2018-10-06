@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Badge, Glyphicon } from "react-bootstrap";
 import GistHeader from "./GistHeader";
 import GistScript from "./GistScript";
 
@@ -74,7 +74,7 @@ class ReactChallenge extends Component {
           <GistHeader
             gist={gist}
           />
-          <small>Total files: {files.length}</small>
+          <small>Total files: <Badge>{files.length}</Badge></small>
           {files.map((file, index) => <GistScript key={index} file={file} />)}
         </div>
       )}
@@ -100,6 +100,7 @@ class ReactChallenge extends Component {
               bsStyle="primary"
               onClick={() => this.changePage(-1)}
             >
+              <Glyphicon glyph="chevron-left"/>
               Previous Page
             </Button>
             {`- ${pageNumber} -`}
@@ -109,6 +110,7 @@ class ReactChallenge extends Component {
               onClick={() => this.changePage(+1)}
             >
               Next Page
+              <Glyphicon glyph="chevron-right"/>
             </Button>
           </div>
         </div>
