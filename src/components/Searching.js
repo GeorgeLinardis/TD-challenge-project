@@ -33,16 +33,15 @@ class Searching extends Component {
             <Modal.Body>
               <p>If I set</p>
               <pre>
-                onHide={"{"}this.handleClose{"}"}
+                <code className="language-javascript">
+                  onHide={"{"}this.handleClose{"}"}
+                </code>
               </pre>
-              <p>in the Modal Element
-                <i>(and remove currently added onKeyDown handler)</i>
-                it will enable by default <b>Esc</b> key as an option to close the modal.
-                It will also enable click-outside closing functionality.
+              <p>in the Modal Element <i>(and remove currently added onKeyDown handler)</i>
+                it will enable by default <b>Esc</b> key as an option to close the modal. It will also enable click-outside closing functionality.
               </p>
               <p><b>That would be my first choice.</b></p>
-              <p>Another way would be to use an event
-                handler which is how the <b>Esc</b> closing works here.</p>
+              <p>Another way would be to use an event handler which is how the <b>Esc</b> closing works here.</p>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={this.handleModal}>Close</Button>

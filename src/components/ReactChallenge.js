@@ -68,7 +68,6 @@ class ReactChallenge extends Component {
       return <p>{displayError}</p>
     }
     return gistData.map(gist => {
-      console.log(gist);
       const files = this.getFiles(gist.files);
       return (
         <div key={gist.id} className="gist-container">
@@ -76,7 +75,7 @@ class ReactChallenge extends Component {
             gist={gist}
           />
           <small>Total files: {files.length}</small>
-          {files.map(file => <GistScript file={file} />)}
+          {files.map((file, index) => <GistScript key={index} file={file} />)}
         </div>
       )}
     )
@@ -113,7 +112,6 @@ class ReactChallenge extends Component {
             </Button>
           </div>
         </div>
-
       </section>
     )
   }

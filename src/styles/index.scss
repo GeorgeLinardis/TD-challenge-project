@@ -2,12 +2,10 @@
 @import "./main";
 
 // Components
-@import "components/App";
 @import "components/Header";
-@import "components/Searching";
 @import "components/ReactChallenge";
 @import "components/GistHeader";
 @import "components/GistScript";
 
-
+// 3rd party styling
 @import "./prism.css";

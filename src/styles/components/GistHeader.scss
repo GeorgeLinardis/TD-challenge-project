@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 0;
+  margin: 10px 0;
 
   .avatar-image {
     width: $logo-size-base;
@@ -14,5 +14,12 @@
   .username {
     display: inline;
     color: $secondary-color;
+  }
+
+  @media (max-width: $mobile) {
+    .avatar-image {
+      width: $logo-size-small;
+      height: $logo-size-small;
+    }
   }
 }

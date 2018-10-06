@@ -10,7 +10,7 @@ const GistHeader = (props) => {
         <img alt="avatar-img" className="avatar-image" src={owner.avatar_url}/>
         <div className="username">{owner.login}</div>
       </div>
-      <Button target="_blank" href={html_url} bsStyle="primary">Check gist</Button>
+      <Button target="_blank" href={html_url}>Check gist</Button>
     </div>
   )
 }

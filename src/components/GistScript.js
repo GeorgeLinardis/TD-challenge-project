@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Prism from "prismjs";
 
 
@@ -14,8 +15,7 @@ class GistScript extends Component {
   }
 
   fetchScript () {
-    const { url, type } = this.props.file;
-    console.log(type);
+    const { url } = this.props.file;
     fetch(url)
       .then(response => response.text())
       .then(scriptContent => (
@@ -30,7 +30,6 @@ class GistScript extends Component {
   render() {
     const { scriptContent } = this.state;
     const { filename, language } = this.props.file;
-    console.log({language})
     return (
       <div className="gist-script">
         <div className="gist-script-info">
@@ -42,7 +41,7 @@ class GistScript extends Component {
           </div>
         </div>
         <pre>
-          <code className={`language-${language && language.toLowerCase() || "text"}`}>
+          <code className={`language-${language ? language.toLowerCase() : "text"}`}>
             {scriptContent}
           </code>
         </pre>
@@ -52,3 +51,7 @@ class GistScript extends Component {
 }
 
 export default GistScript;
+
+GistScript.propTypes = {
+  file: PropTypes.object
+}
