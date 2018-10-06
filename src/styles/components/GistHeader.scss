@@ -1,7 +1,7 @@
 .gist-header {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin: 20px 0;
 
@@ -12,7 +12,7 @@
     border-radius: 10px;
   }
   .username {
+    display: inline;
     color: $secondary-color;
   }
-
 }

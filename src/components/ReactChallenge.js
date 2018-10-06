@@ -8,7 +8,7 @@ class ReactChallenge extends Component {
     super(props);
     this.state = {
       gistData: "",
-      perPage: 3,
+      perPage: 5,
       pageNumber: 1
     }
   }
@@ -53,20 +53,33 @@ class ReactChallenge extends Component {
       })
   }
 
+  getFiles = (files) => {
+    const formattedFiles = [];
+    for (const keys in files) {
+      formattedFiles.push({filename: files[keys].filename, url: files[keys]["raw_url"], type: files[keys].type, language: files[keys].language})
+    }
+    return formattedFiles;
+  }
+
   renderGists() {
     const { gistData, errorMsg, limitError } = this.state;
     const displayError = errorMsg || limitError;
     if (displayError) {
       return <p>{displayError}</p>
     }
-    return gistData.map(gist => (
-      <div key={gist.id} className="gist-container">
-        <GistHeader
-          gist={gist}
-        />
-        <GistScript/>
-      </div>
-    ))
+    return gistData.map(gist => {
+      console.log(gist);
+      const files = this.getFiles(gist.files);
+      return (
+        <div key={gist.id} className="gist-container">
+          <GistHeader
+            gist={gist}
+          />
+          <small>Total files: {files.length}</small>
+          {files.map(file => <GistScript file={file} />)}
+        </div>
+      )}
+    )
   }
 
   render() {
