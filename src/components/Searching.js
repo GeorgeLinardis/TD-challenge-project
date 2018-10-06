@@ -33,7 +33,7 @@ class Searching extends Component {
             <Modal.Body>
               <p>If I set</p>
               <pre>
-                <code className="language-javascript">
+                <code>
                   onHide={"{"}this.handleClose{"}"}
                 </code>
               </pre>

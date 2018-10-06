@@ -78,7 +78,7 @@ class Algorithms extends Component {
             </div>
           ))}
         </div>
-        <Button onClick={this.startTesting}>Begin Testing</Button>
+        <Button bsStyle="primary" onClick={this.startTesting}>Begin Testing</Button>
       </section>
     )
   }
