@@ -1,0 +1,18 @@
+.gist-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0;
+
+  .avatar-image {
+    width: $logo-size-base;
+    height: $logo-size-base;
+    margin-right: 20px;
+    border-radius: 10px;
+  }
+  .username {
+    color: $secondary-color;
+  }
+
+}

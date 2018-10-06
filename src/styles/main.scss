@@ -5,6 +5,13 @@ body {
   font-size: $font-size-base;
 }
 
+a {
+  color: $secondary-color;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .modal-content {
   color: $black;
 }
