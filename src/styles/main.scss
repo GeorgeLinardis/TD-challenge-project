@@ -4,3 +4,20 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
 }
+
+.modal-content {
+  color: $black;
+}
+
+@media (max-width: $tablet) {
+  h2 {
+    font-size: $h2-size-medium;
+  }
+}
+
+
+@media (max-width: $mobile) {
+  h2 {
+    font-size: $h2-size-small;
+  }
+}

@@ -1,0 +1,24 @@
+header {
+  font-size: $font-size-xxl;
+  text-align: center;
+  padding: 30px 0;
+  white-space: nowrap;
+  .logo-image {
+    width: $logo-size-base;
+    margin-right: 5px;
+  }
+  .logo-first-part {
+    font-family: 'Crete Round', serif;
+  }
+  .logo-second-part {
+    font-family: 'Quicksand', sans-serif;
+  }
+
+
+  @media (max-width: $tablet) {
+    font-size: $font-size-xl;
+    .logo-image {
+      width: $logo-size-small;
+    }
+  }
+}
