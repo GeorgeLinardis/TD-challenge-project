@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import GistHeader from "./GistHeader";
 import GistScript from "./GistScript";
 
@@ -7,13 +8,24 @@ class ReactChallenge extends Component {
     super(props);
     this.state = {
       gistData: "",
-      perPage: 2,
-      pageNumber: 1
+      perPage: 5,
+      pageNumber: 1,
+      noMoreResults: false
     }
   }
 
   componentDidMount() {
     this.getGists();
+  }
+
+  changePage = (num) => {
+    let pageNumber = this.state.pageNumber + num;
+    if (pageNumber <= 1) {
+      pageNumber = 1;
+    }
+    this.setState({
+      pageNumber
+    }, () => this.getGists())
   }
 
   getGists = () => {
@@ -31,6 +43,10 @@ class ReactChallenge extends Component {
 
   renderGists() {
     const { gistData } = this.state;
+    // error preventing for pagination or requests limit limitations
+    if (gistData.message) {
+      return <p>{gistData.message}</p>
+    }
     return gistData.map(gist => (
       <div key={gist.id} className="gist-container">
         <GistHeader
@@ -42,7 +58,8 @@ class ReactChallenge extends Component {
   }
 
   render() {
-    const { gistData } = this.state;
+    const maxPaginationNumber = 70;
+    const { gistData, pageNumber } = this.state;
     return (
       <section className="react-challenge">
         <h2>React</h2>
@@ -51,8 +68,27 @@ class ReactChallenge extends Component {
           build a single page app that lists public gists with their author & html url.</p>
         <p><i>Bonus: include the gist's code in the listing.</i></p>
         <h2>Answer</h2>
-        {!gistData && <p>No Data Available</p>}
-        {gistData && this.renderGists()}
+        <div className="gists-container">
+          {!gistData && <p>No Data Available</p>}
+          {gistData && this.renderGists()}
+          <div className="select-page-buttons">
+            <Button
+              disabled={pageNumber === 1}
+              bsStyle="primary"
+              onClick={() => this.changePage(-1)}
+            >
+              Previous Page
+            </Button>
+            {`- ${pageNumber} -`}
+            <Button
+              disabled={pageNumber >= maxPaginationNumber} // limited pagination for unauthorized users
+              bsStyle="primary"
+              onClick={() => this.changePage(+1)}
+            >
+              Next Page
+            </Button>
+          </div>
+        </div>
 
       </section>
     )

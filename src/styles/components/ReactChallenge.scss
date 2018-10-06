@@ -1,5 +1,10 @@
 .react-challenge {
+  .gists-container,
   .gist-container {
     margin: 20px 0;
+  }
+  .select-page-buttons {
+    display: flex;
+    justify-content: space-between;
   }
 }
