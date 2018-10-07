@@ -23,7 +23,7 @@ class Searching extends Component {
     return (
       <section className="searching">
         <h2>Searching</h2>
-        <p>Using react-bootstrap how would one close a modal when escape key is pressed?</p>
+        <p>Using <i>react-bootstrap</i> how would one close a modal when escape key is pressed?</p>
         <h2>Answer</h2>
         <div onKeyDown={this.handleKeyClose}>
           <Modal show={this.state.show}>
@@ -34,11 +34,11 @@ class Searching extends Component {
               <p>If I set</p>
               <pre>
                 <code>
-                  onHide={"{"}this.handleClose{"}"}
+                  onHide={"{"}this.handleModal{"}"}
                 </code>
               </pre>
-              <p>in the Modal Element <i>(and remove currently added onKeyDown handler)</i>
-                it will enable by default <b>Esc</b> key as an option to close the modal. It will also enable click-outside closing functionality.
+              <p>in the Modal Element <i>(and remove currently added onKeyDown handler)</i> it will enable by default <b>Esc</b>
+                key as an option to close the modal. It will also enable click-outside closing functionality.
               </p>
               <p><b>That would be my first choice.</b></p>
               <p>Another way would be to use an event handler which is how the <b>Esc</b> closing works here.</p>
