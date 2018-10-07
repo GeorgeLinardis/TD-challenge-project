@@ -20,6 +20,20 @@ By using Facebook’s create-react-app (https://github.com/facebook/create-react
 
 ---
 
+#### To use this app
+
+
+Use the following commands:
+
+1. `git clone https://github.com/GeorgeLinardis/Challenge-project.git`
+
+2. `cd Challenge-project`
+
+3. `npm install`
+
+4. `npm start`
+
+
 ##### Tools used for this challenge:
 - [Create-react-app 2.0](https://github.com/facebook/create-react-app)
 - [React Bootstrap](https://react-bootstrap.github.io/)
