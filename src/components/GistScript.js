@@ -12,6 +12,7 @@ class GistScript extends Component {
   }
   componentDidMount() {
     this.fetchScript();
+    Prism.highlightAll();
   }
 
   fetchScript () {
@@ -24,6 +25,7 @@ class GistScript extends Component {
           }, () => Prism.highlightAll())
         )
       )
+      .catch((error)=> console.log(error))
   }
 
 

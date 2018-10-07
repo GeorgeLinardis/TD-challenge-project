@@ -17,10 +17,14 @@ class ReactChallenge extends Component {
     this.getGists();
   }
 
+  /**
+   * Changes pages which user sees. (min = 1, max = paginationLimit)
+   * @param num
+   */
   changePage = (num) => {
     const paginationLimit = 70;
     let pageNumber = this.state.pageNumber + num;
-    if (pageNumber <= 1) {
+    if (pageNumber < 1) {
       pageNumber = 1;
     }
     if (pageNumber >= paginationLimit) {
@@ -31,6 +35,12 @@ class ReactChallenge extends Component {
     }, () => this.getGists())
   }
 
+  /**
+   * Fetches gists from Github's gist API.
+   * Using Github's gist API as a non authorized user you have limitations on pagination or total requests number.
+   * If u reach the pagination limit you can go back to previous pages and see the results,
+   * but if u reach the requests limit you won't be able to check any results for some time.
+   */
   getGists = () => {
     const { perPage, pageNumber } = this.state;
     const url = `https://api.github.com/gists/public?page=${pageNumber}&per_page=${perPage}`;
@@ -38,7 +48,6 @@ class ReactChallenge extends Component {
       .then(response => response.json())
       .then(gistData => {
         const additionalParameters = {};
-        // error check for pagination or requests limitations for unauthorized users - check gist api documentation
         if (gistData.message) {
           if (gistData.message.includes("rate")) {
             additionalParameters.limitError = gistData.message;
@@ -51,8 +60,10 @@ class ReactChallenge extends Component {
           ...additionalParameters
         })
       })
+      .catch((error) => console.log(error))
   }
 
+  // Restructures files by pushing them in an array and getting only needed information for GistScript
   getFiles = (files) => {
     const formattedFiles = [];
     for (const keys in files) {
@@ -67,7 +78,7 @@ class ReactChallenge extends Component {
     if (displayError) {
       return <p>{displayError}</p>
     }
-    return gistData.map(gist => {
+    return Array.isArray(gistData) && gistData.map(gist => {
       const files = this.getFiles(gist.files);
       return (
         <div key={gist.id} className="gist-container">
@@ -105,7 +116,7 @@ class ReactChallenge extends Component {
             </Button>
             {`- ${pageNumber} -`}
             <Button
-              disabled={!!errorMsg}
+              disabled={!!errorMsg || !!limitError}
               bsStyle="primary"
               onClick={() => this.changePage(+1)}
             >
