@@ -1,4 +1,14 @@
-## Challenge
+# TD Challenge
+
+![image](https://img.shields.io/date/1527845902?label=repo%20created)
+
+
+![Challenge preview](public/Challenge-screenshot.png)
+
+![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![image](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
+
 
 #### Searching
 Using `react-bootstrap` how would one close a modal when escape key is pressed?
