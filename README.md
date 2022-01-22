@@ -51,6 +51,6 @@ Use the following commands:
 - [Deployed with Heroku](https://dashboard.heroku.com/)
 
 
-[Check it out live](https://talent-desk-project.herokuapp.com/)
+[This challenge is deployed with Heroku - check it out live](https://talent-desk-project.herokuapp.com/)
 
 *Hope you enjoy! I did!* :smile:
