@@ -10,10 +10,12 @@
 ![image](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
 
-#### Searching
+## Questions
+
+### Searching
 Using `react-bootstrap` how would one close a modal when escape key is pressed?
 
-#### Algorithms
+### Algorithms
 Given an array of words, write a function that checks whether any word in the array is an anagram of another word in the array. E.g.:
 > abba, anna, nana, dorothy => true
 
@@ -23,14 +25,14 @@ The function can be in any language or pseudocode, it should take one array as a
 
 *Bonus*: what is the time complexity of your function?
 
-#### React
+### React
 By using Facebook’s create-react-app (https://github.com/facebook/create-react-app) & GitHub’s gist API (https://api.github.com/gists/public) build a single page app that lists public gists with their author & html url.
 
 *Bonus*: include the gist's code in the listing.
 
 ---
 
-#### To use this app
+## To use this app
 
 
 Use the following commands:
@@ -44,7 +46,7 @@ Use the following commands:
 4. `npm start`
 
 
-##### Tools used for this challenge:
+### Tools used for this challenge:
 - [Create-react-app 2.0](https://github.com/facebook/create-react-app)
 - [React Bootstrap](https://react-bootstrap.github.io/)
 - [Prism.js](https://prismjs.com/)
